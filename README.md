@@ -1,3 +1,7 @@
-# Test Project
-# Git Commands git pull origin dev ( to sync the changes)
-# vamsi yo yo commit
+# Course library
+Platform to create free courses using free content(youtube, vimeo).
+
+## Tech Stack
+. React(Next.js)
+. Firebase
+
