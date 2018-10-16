@@ -1,28 +1,41 @@
-import Link from 'next/link';
+import React, { Component } from 'react';
+import { Button, Dropdown, Menu, Image, Input, Container } from 'semantic-ui-react';
 
-const Header = () => (
-  
-    <div>
-    
-    <div className="ui menu">
-    <img className="logo"src='../static/logo.png'/>
- 
-  <a className="active item">Home</a>
-  <a className="item">Become an Instructor</a>
-  
-  <div className="right menu">
-    <div className="item">
-      <div className="ui action left icon input">
-        <i className="search icon"></i>
-        <input type="text" placeholder="Search For Courses"/>
-        <button className="ui button">Submit</button>
-      </div>
-    </div>
-    <a className="item">Sign In</a>
-  </div>
-</div>
-</div>
-   
-  )
-  
-export default Header
+export default class Header extends Component {
+  state = { activeItem: 'home' }
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+
+  render() {
+    const { activeItem } = this.state
+
+    return (
+      <Container>
+
+      <Menu attached='top' size='huge' >
+        <Menu.Item>
+            <Image src='../static/logo.png' size='small'></Image>
+        </Menu.Item>
+        
+        <Menu.Menu position='center'>
+            <Menu.Item>
+                <Input icon='search' placeholder='Search courses...' />
+            </Menu.Item>
+        </Menu.Menu>     
+
+        <Menu.Menu position='right'>
+            <Menu.Item
+            name='Sign In'
+            active={activeItem === 'Sign In'}
+            onClick={this.handleItemClick}
+            />
+
+            <Menu.Item>
+                <Button primary>Sign Up</Button>
+            </Menu.Item>
+        </Menu.Menu>
+      </Menu>
+      </Container>  
+    )
+  }
+}
